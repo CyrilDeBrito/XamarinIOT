@@ -12,5 +12,22 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="App IOT" />
+    <Button
+        android:text="Voice1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn-voice1"
+        android:contentDescription="Voice1"
+        android:onClick="BtnVoice1"
+        app:backgroundTint="@android:color/holo_blue_bright" />
+    <Button
+        android:text="Voice2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn-voice2"
+        android:contentDescription="Voice2"
+        android:onClick="BtnVoice1"
+        app:backgroundTint="@android:color/holo_red_dark"
+        android:layout_toLeftOf="@id/btn-voice2" />
 
 </RelativeLayout>

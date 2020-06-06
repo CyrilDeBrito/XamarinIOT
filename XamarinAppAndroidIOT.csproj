@@ -64,6 +64,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Models\AccelerometerReader.cs" />
     <Compile Include="Models\GyroscopeReader.cs" />
+    <Compile Include="Models\SongPlayer.cs" />
     <Compile Include="Models\Timer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
