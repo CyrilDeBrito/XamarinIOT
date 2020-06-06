@@ -4165,6 +4165,36 @@ namespace XamarinAppAndroidIOT
 			// aapt resource value: 0x7F0E0009
 			public const int Voice01_10 = 2131623945;
 			
+			// aapt resource value: 0x7F0E000A
+			public const int Voice02_01 = 2131623946;
+			
+			// aapt resource value: 0x7F0E000B
+			public const int Voice02_02 = 2131623947;
+			
+			// aapt resource value: 0x7F0E000C
+			public const int Voice02_03 = 2131623948;
+			
+			// aapt resource value: 0x7F0E000D
+			public const int Voice02_04 = 2131623949;
+			
+			// aapt resource value: 0x7F0E000E
+			public const int Voice02_05 = 2131623950;
+			
+			// aapt resource value: 0x7F0E000F
+			public const int Voice02_06 = 2131623951;
+			
+			// aapt resource value: 0x7F0E0010
+			public const int Voice02_07 = 2131623952;
+			
+			// aapt resource value: 0x7F0E0011
+			public const int Voice02_08 = 2131623953;
+			
+			// aapt resource value: 0x7F0E0012
+			public const int Voice02_09 = 2131623954;
+			
+			// aapt resource value: 0x7F0E0013
+			public const int Voice02_10 = 2131623955;
+			
 			static Raw()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
