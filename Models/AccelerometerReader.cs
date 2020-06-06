@@ -25,6 +25,8 @@ namespace XamarinAppAndroidIOT.Models
         public float accY;
         public float accZ;
         public double gForce;
+        public double earthForce;
+        int loop = 1;
 
         public AccelerometerReader()
         {
@@ -78,20 +80,52 @@ namespace XamarinAppAndroidIOT.Models
             //calcul force terrestre 
             gForce = Math.Sqrt(gX * gX + gY * gY + gZ * gZ);
 
-            shockOnPhone();
+            //Gravity on Phone
+            earthForce = SensorManager.GravityEarth;
+
+            ShockOnPhone();
 
             //Control on console
             Console.WriteLine($"Reading: X: {accX}, Y: {accY}, Z: {accZ}");
 
         }
 
-        private void shockOnPhone()
+        private void ShockOnPhone()
         {
-            var sensorManager = SensorManager.GravityEarth;
-            if (gForce != sensorManager)
+            if (CalculGForceApproximative())
             {
-                MainActivity.songPlayer.ControlPlayer("05");
+                 switch (loop) {
+                    case 1:
+                    MainActivity.songPlayer.ControlPlayer("05");
+                        loop = loop + 1;
+                        break;
+                    case 2:
+                        MainActivity.songPlayer.ControlPlayer("06");
+                        loop = loop + 1;
+                        break;
+                    case 3 :
+                        MainActivity.songPlayer.ControlPlayer("07");
+                        loop = 1;
+                        break;
+                 }
             }
+        }
+
+        private bool CalculGForceApproximative()
+        {
+            bool isShock = false;
+            double apporx = SensorManager.GravityEarth / 2;
+            double earthForceLess = earthForce - apporx;
+            double earthForceMore = earthForce + apporx;
+            Console.WriteLine("BOOM");
+            Console.WriteLine(earthForceLess);
+            Console.WriteLine(earthForceMore);
+
+            if (gForce < earthForceLess || gForce > earthForceMore)
+            {
+                isShock = true;
+            }
+            return isShock;
         }
     }
 }
