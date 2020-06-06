@@ -4,6 +4,7 @@ Projet on Android Xamarin for IOT dev.
 To download this repo use Git CLI : https://github.com/CyrilDeBrito/XamarinIOT.git
 
 CLI for Git to push only one commit: 
+
 1 - git status
 2 - git add *
 2.1 - git status (need all green)
@@ -14,6 +15,7 @@ CLI for Git to push only one commit:
 6 - git push
 
 CLI for Git to push more than one commit: 
+
 1 - git status
 2 - git add *
 2.1 - git status (need all green)
