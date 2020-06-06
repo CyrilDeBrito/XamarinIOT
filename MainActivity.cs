@@ -6,16 +6,21 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using XamarinAppAndroidIOT.Models;
 
 namespace XamarinAppAndroidIOT
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        public static AccelerometerReader accelerometerReader = new AccelerometerReader();
+        public static SongPlayer songPlayer;
 
         Button BtnVoice1;
         Button BtnVoice2;
         Button BtnVoice3;
+
+        
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,21 +36,27 @@ namespace XamarinAppAndroidIOT
             BtnVoice2.Click += BtnVoice2_Click;
             BtnVoice3.Click += BtnVoice3_Click;
 
+            songPlayer = new SongPlayer("01", this);
+
+            accelerometerReader.ToggleAccelerometer();
+
+            songPlayer.ControlPlayer("01");
         }
 
         private void BtnVoice1_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            songPlayer.Voice = "01";
         }
 
         private void BtnVoice2_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            songPlayer.Voice = "02";
         }
 
         private void BtnVoice3_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // Stop Sound
+            songPlayer.Voice = "03";
         }
 	}
 }

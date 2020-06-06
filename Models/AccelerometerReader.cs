@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Hardware;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -20,7 +21,10 @@ namespace XamarinAppAndroidIOT.Models
         SensorSpeed speed = SensorSpeed.UI;
         //Set isStart to know if Accelerometer is start
         bool isStarted = false;
-
+        public float accX;
+        public float accY;
+        public float accZ;
+        public double gForce;
 
         public AccelerometerReader()
         {
@@ -62,12 +66,32 @@ namespace XamarinAppAndroidIOT.Models
         {
             var data = e.Reading;
             //Process Acceleration X, Y, Z.
-            var accX = data.Acceleration.X;
-            var accY = data.Acceleration.Y;
-            var accZ = data.Acceleration.Z;
+            accX = data.Acceleration.X;
+            accY = data.Acceleration.Y;
+            accZ = data.Acceleration.Z;
+
+            // G force of earth
+            var gX = accX * SensorManager.GravityEarth;
+            var gY = accY * SensorManager.GravityEarth;
+            var gZ = accZ * SensorManager.GravityEarth;
+
+            //calcul force terrestre 
+            gForce = Math.Sqrt(gX * gX + gY * gY + gZ * gZ);
+
+            shockOnPhone();
+
             //Control on console
             Console.WriteLine($"Reading: X: {accX}, Y: {accY}, Z: {accZ}");
 
+        }
+
+        private void shockOnPhone()
+        {
+            var sensorManager = SensorManager.GravityEarth;
+            if (gForce != sensorManager)
+            {
+                MainActivity.songPlayer.ControlPlayer("05");
+            }
         }
     }
 }
