@@ -30,9 +30,13 @@ namespace XamarinAppAndroidIOT.Models
 
         public void ControlPlayer(String command)
         {
-            var song = "Voice" + Voice + "_" + command + ".mp3";
-            StartPlayer(song);
-
+            if (Voice != "03") { 
+                var song = "Voice" + Voice + "_" + command + ".mp3";
+                StartPlayer(song);
+            } else
+            {
+                Console.WriteLine("StopSong clicked on user view");
+            }
         }
 
         public void StartPlayer(String filePath)
@@ -52,11 +56,5 @@ namespace XamarinAppAndroidIOT.Models
         }
 
         public MediaPlayer MediaPlayer { get; private set; }
-
-        public void PlayerSong1()
-        {
-            //MediaPlayer = MediaPlayer.Create(this, Resource.Raw.Voice01_01);
-        }
-        
     }
 }

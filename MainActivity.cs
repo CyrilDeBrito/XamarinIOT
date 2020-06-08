@@ -18,7 +18,7 @@ namespace XamarinAppAndroidIOT
 
         Button BtnVoice1;
         Button BtnVoice2;
-        Button BtnVoice3;
+        Button BtnStopVoice;
 
         
 
@@ -30,11 +30,11 @@ namespace XamarinAppAndroidIOT
 
             BtnVoice1 = FindViewById<Button>(Resource.Id.btnVoice1);   
             BtnVoice2 = FindViewById<Button>(Resource.Id.btnVoice2);
-            BtnVoice3 = FindViewById<Button>(Resource.Id.btnVoice3);
+            BtnStopVoice = FindViewById<Button>(Resource.Id.btnStopVoice);
 
             BtnVoice1.Click += BtnVoice1_Click;
             BtnVoice2.Click += BtnVoice2_Click;
-            BtnVoice3.Click += BtnVoice3_Click;
+            BtnStopVoice.Click += BtnStopVoice_Click;
 
             songPlayer = new SongPlayer("01", this);
 
@@ -53,7 +53,7 @@ namespace XamarinAppAndroidIOT
             songPlayer.Voice = "02";
         }
 
-        private void BtnVoice3_Click(object sender, EventArgs e)
+        private void BtnStopVoice_Click(object sender, EventArgs e)
         {
             // Stop Sound
             songPlayer.Voice = "03";

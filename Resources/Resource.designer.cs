@@ -3326,13 +3326,13 @@ namespace XamarinAppAndroidIOT
 			public const int browser_actions_menu_view = 2131230759;
 			
 			// aapt resource value: 0x7F080028
-			public const int btnVoice1 = 2131230760;
+			public const int btnStopVoice = 2131230760;
 			
 			// aapt resource value: 0x7F080029
-			public const int btnVoice2 = 2131230761;
+			public const int btnVoice1 = 2131230761;
 			
 			// aapt resource value: 0x7F08002A
-			public const int btnVoice3 = 2131230762;
+			public const int btnVoice2 = 2131230762;
 			
 			// aapt resource value: 0x7F08002B
 			public const int buttonPanel = 2131230763;

@@ -17,16 +17,20 @@ namespace XamarinAppAndroidIOT.Models
 {
     public class AccelerometerReader
     {
-        //Set speed delay for monitoring changes.
+        // Speed delay for monitoring changes.
         SensorSpeed speed = SensorSpeed.UI;
-        //Set isStart to know if Accelerometer is start
+        // isStart to know if Accelerometer is start
         bool isStarted = false;
+        // Gravitational phone X; Y, Z
         public float accX;
         public float accY;
         public float accZ;
-        public double gForce;
-        public double earthForce;
-        int loop = 1;
+        // Gravitational calcul on Phone
+        public double phoneGravitationalForce;
+        // Earth Gravity
+        public double earthForce = SensorManager.GravityEarth;
+        // Shock on phone to play a different song
+        public int nbShockOnPhone = 1;
 
         public AccelerometerReader()
         {
@@ -77,51 +81,56 @@ namespace XamarinAppAndroidIOT.Models
             var gY = accY * SensorManager.GravityEarth;
             var gZ = accZ * SensorManager.GravityEarth;
 
-            //calcul force terrestre 
-            gForce = Math.Sqrt(gX * gX + gY * gY + gZ * gZ);
+            //Gravity of phone 
+            phoneGravitationalForce = Math.Sqrt(gX * gX + gY * gY + gZ * gZ);
 
-            //Gravity on Phone
-            earthForce = SensorManager.GravityEarth;
+            //Gravity of earth
+            //earthForce = SensorManager.GravityEarth;
 
             ShockOnPhone();
 
-            //Control on console
-            Console.WriteLine($"Reading: X: {accX}, Y: {accY}, Z: {accZ}");
+            //Control on console gravity phone real time
+            //Console.WriteLine($"Reading: X: {accX}, Y: {accY}, Z: {accZ}");
 
         }
 
         private void ShockOnPhone()
         {
-            if (CalculGForceApproximative())
+            if (IsShock())
             {
-                 switch (loop) {
+                 switch (nbShockOnPhone) {
+
                     case 1:
-                    MainActivity.songPlayer.ControlPlayer("05");
-                        loop = loop + 1;
+                        Console.WriteLine("Shock :" + nbShockOnPhone);
+                        nbShockOnPhone = 2;
+                        MainActivity.songPlayer.ControlPlayer("05");
                         break;
+
                     case 2:
+                        Console.WriteLine("Shock :" + nbShockOnPhone);
+                        nbShockOnPhone =3;
                         MainActivity.songPlayer.ControlPlayer("06");
-                        loop = loop + 1;
                         break;
-                    case 3 :
+
+                    case 3:
+                        Console.WriteLine("Shock :" + nbShockOnPhone);
+                        nbShockOnPhone = 1;
                         MainActivity.songPlayer.ControlPlayer("07");
-                        loop = 1;
                         break;
+
                  }
             }
         }
 
-        private bool CalculGForceApproximative()
+        private bool IsShock()
         {
-            bool isShock = false;
-            double apporx = SensorManager.GravityEarth / 2;
+            double apporx = earthForce / 4;
             double earthForceLess = earthForce - apporx;
             double earthForceMore = earthForce + apporx;
-            Console.WriteLine("BOOM");
-            Console.WriteLine(earthForceLess);
-            Console.WriteLine(earthForceMore);
 
-            if (gForce < earthForceLess || gForce > earthForceMore)
+            // Set isShock on false to stop function shock if phone are dont shoot.
+            bool isShock = false;
+            if (phoneGravitationalForce < earthForceLess || phoneGravitationalForce > earthForceMore)
             {
                 isShock = true;
             }

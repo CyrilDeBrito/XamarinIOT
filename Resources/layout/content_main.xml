@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -40,12 +40,12 @@
         android:layout_height="match_parent"
         android:id="@+id/linearLayout3">
         <Button
-            android:text="Voice3"
+            android:text="StopVoice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnVoice3"
-            android:contentDescription="btnVoice3"
-            android:onClick="btnVoice3"
+            android:id="@+id/btnStopVoice"
+            android:contentDescription="btnStopVoice"
+            android:onClick="btnStopVoice"
             app:backgroundTint="@android:color/holo_orange_dark" />
     </LinearLayout>
 </LinearLayout>
