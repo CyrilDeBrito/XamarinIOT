@@ -15,6 +15,7 @@ namespace XamarinAppAndroidIOT
     {
         public static AccelerometerReader accelerometerReader = new AccelerometerReader();
         public static SongPlayer songPlayer;
+        public static Timer timer;
 
         Button BtnVoice1;
         Button BtnVoice2;
@@ -41,6 +42,10 @@ namespace XamarinAppAndroidIOT
             accelerometerReader.ToggleAccelerometer();
 
             songPlayer.ControlPlayer("01");
+
+            
+/*            timer = new Timer();
+            timer.startTimer(10000);*/
         }
 
         private void BtnVoice1_Click(object sender, EventArgs e)
